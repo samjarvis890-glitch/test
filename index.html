@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Restaurant Booking</title>
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="description" content="Demo food delivery frontend — Swiggy-style clone" />
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <div class="brand">
+                <!-- Simple logo -->
+                <svg viewBox="0 0 100 24" width="120" height="28" aria-hidden>
+                    <rect x="0" y="0" width="100" height="24" rx="6" fill="#ff6f00"></rect>
+                    <text x="50" y="16" font-family="Segoe UI, Roboto, sans-serif" font-weight="700" font-size="9.5"
+                        text-anchor="middle" fill="#fff">FOODIGO</text>
+                </svg>
+            </div>
+
+            <div class="search-wrap">
+                <input id="search" type="search" placeholder="Search for restaurants, cuisines or dishes..."
+                    aria-label="Search" />
+                <button id="clear-search" class="icon-btn" title="Clear search" aria-hidden>✕</button>
+            </div>
+
+            <div class="controls">
+                <div class="location">
+                    <button id="location-btn" class="pill"><span>Deliver to</span><strong
+                            id="location-text">Koramangala, Bengaluru</strong></button>
+                </div>
+                <div class="cart">
+                    <button id="cart-btn" class="cart-btn">
+                        <svg class="cart-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden>
+                            <path fill="currentColor" d="M7 4h-2l-1 2h2l1 9h10l1-9h2l-1-2h-2l-1 2h-6l-1-2z"></path>
+                        </svg>
+                        <span id="cart-count" class="cart-count">0</span>
+                        <span class="cart-label">Cart</span>
+
+                </div>
+                <button id="logoutBtn" style="background:#ff7b00;color:#fff;border:none;padding:0.6rem 1.2rem;
+                    border-radius:8px;font-weight:600;cursor:pointer;">Logout</button>
+            </div>
+            </button>
+        </div>
+        </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <div class="hero-left">
+                <h1>Restaurants near <span id="hero-location">Koramangala</span></h1>
+                <p>Fresh food delivered fast — explore top restaurants and trending dishes.</p>
+            </div>
+            <div class="hero-right">
+                <img src="https://images.pexels.com/photos/1395967/pexels-photo-1395967.jpeg" alt="Food hero" />
+            </div>
+        </section>
+
+        <section class="filters">
+            <div class="filter-row">
+                <div class="chips" id="cuisine-chips">
+                    <!-- dynamic chips -->
+                </div>
+                <div class="sort">
+                    <label for="sort-select">Sort:</label>
+                    <select id="sort-select">
+                        <option value="relevance">Relevance</option>
+                        <option value="rating">Top rated</option>
+                        <option value="delivery-time">Delivery time</option>
+                        <option value="cost-asc">Cost: Low to High</option>
+                        <option value="cost-desc">Cost: High to Low</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <section id="restaurants" class="restaurants-grid" aria-live="polite">
+            <!-- restaurant cards injected here -->
+        </section>
+
+        <footer class="footer">
+            <div>© <span id="year"></span> Foodigo — Demo UI • Not affiliated with any brand</div>
+            <div class="footer-links">
+                <a href="#" onclick="return false">Privacy</a>
+                <a href="#" onclick="return false">Terms</a>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Menu Modal -->
+    <div id="menu-modal" class="modal" aria-hidden="true">
+        <div class="modal-backdrop" id="modal-backdrop"></div>
+        <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <header class="modal-header">
+                <h2 id="modal-title">Menu</h2>
+                <button id="close-modal" class="icon-btn">✕</button>
+            </header>
+            <div class="modal-body">
+                <div class="menu-restaurant">
+                    <img id="menu-restaurant-img" src="" alt="" />
+                    <div>
+                        <h3 id="menu-restaurant-name"></h3>
+                        <div id="menu-restaurant-meta" class="muted"></div>
+                    </div>
+                </div>
+                <div id="menu-items" class="menu-items"></div>
+            </div>
+            <footer class="modal-footer">
+                <button id="add-selected" class="btn primary">Add Selected to Cart</button>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Cart Drawer -->
+    <aside id="cart-drawer" class="cart-drawer" aria-hidden="true">
+        <header class="cart-header">
+            <h3>Your order</h3>
+            <button id="close-cart" class="icon-btn">✕</button>
+        </header>
+        <div class="cart-body" id="cart-body"></div>
+        <footer class="cart-footer">
+            <div class="cart-summary">
+                <div>Items: <span id="cart-items-count">0</span></div>
+                <div>Subtotal: ₹<span id="cart-subtotal">0</span></div>
+            </div>
+            <div class="cart-actions">
+                <button id="clear-cart" class="btn ghost">Clear</button>
+                <button id="checkout-btn" class="btn primary">Checkout</button>
+            </div>
+        </footer>
+    </aside>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal" aria-hidden="true">
+        <div class="modal-backdrop" id="checkout-backdrop"></div>
+        <div class="modal-panel small" role="dialog" aria-modal="true">
+            <header class="modal-header">
+                <h2>Checkout</h2>
+                <button id="close-checkout" class="icon-btn">✕</button>
+            </header>
+            <div class="modal-body">
+                <p class="muted">This is a demo checkout — no real payments.</p>
+                <div class="checkout-form">
+                    <label>
+                        Name
+                        <input id="cust-name" type="text" placeholder="Full name" />
+                    </label>
+                    <label>
+                        Phone
+                        <input id="cust-phone" type="tel" inputmode="numeric" placeholder="+91 98xxxx" />
+                    </label>
+                    <label>
+                        Address
+                        <textarea id="cust-address" rows="3" placeholder="Delivery address"></textarea>
+                    </label>
+                </div>
+            </div>
+            <footer class="modal-footer">
+                <button id="place-order" class="btn primary">Place order (Demo)</button>
+            </footer>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+
+
+</body>
+
+</html>

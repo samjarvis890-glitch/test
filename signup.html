@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foodigo - Sign Up</title>
+  <link rel="stylesheet" href="foodigo.css" />
+  <script defer src="foodigo.js"></script>
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-card">
+      <a href="index.html" class="logo">
+        <img src="https://static.vecteezy.com/system/resources/previews/052/792/818/non_2x/restaurant-logo-design-vector.jpg" alt="Foodigo logo" />
+        <h1>Foodigo</h1>
+      </a>
+      <h2>Create your account</h2>
+
+      <form id="signupForm" class="auth-form" novalidate>
+        <label>
+          Full Name
+          <input type="text" name="name" required placeholder="John Doe" />
+        </label>
+
+        <label>
+          Email
+          <input type="email" name="email" required placeholder="you@example.com" />
+        </label>
+
+        <label>
+          Password
+          <input type="password" name="password" required minlength="6" placeholder="••••••" />
+        </label>
+
+        <label>
+          Confirm Password
+          <input type="password" name="confirm" required minlength="6" placeholder="••••••" />
+        </label>
+
+        <button type="submit" class="btn primary">Sign Up</button>
+        <p class="form-msg" id="signupMsg"></p>
+      </form>
+
+      <p class="switch-link">Already have an account?
+        <a href="login.html">Log In</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

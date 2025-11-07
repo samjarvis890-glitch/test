@@ -1,0 +1,166 @@
+
+
+:root {
+  --orange: #ff7b00;
+  --light-orange: #ffa54b;
+  --bg: #fefefe;
+  --text: #1e1e1e;
+  --border: #ddd;
+  --radius: 12px;
+  --transition: 0.3s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.auth-container {
+  width: 90%;
+  max-width: 380px;
+  padding: 1rem;
+}
+
+.auth-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem 2rem;
+  text-align: center;
+}
+
+.logo {
+  text-decoration: none;
+  color: var(--orange);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+}
+.logo img {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+}
+.logo h1 {
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.auth-card h2 {
+  margin-top: 0.8rem;
+  font-size: 1.1rem;
+  color: #222;
+}
+
+.auth-form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  text-align: left;
+}
+
+.auth-form label {
+  font-size: 0.85rem;
+  color: #444;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.auth-form input {
+  padding: 0.55rem 0.8rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+  transition: border var(--transition);
+}
+
+.auth-form input:focus {
+  border-color: var(--orange);
+  outline: none;
+}
+
+.btn {
+  padding: 0.6rem;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn.primary {
+  background: var(--orange);
+  color: #fff;
+}
+.btn.primary:hover {
+  background: var(--light-orange);
+}
+
+.form-msg {
+  font-size: 0.85rem;
+  color: var(--orange);
+  text-align: center;
+  margin-top: 0.3rem;
+}
+
+.switch-link {
+  margin-top: 0.8rem;
+  font-size: 0.85rem;
+}
+.switch-link a {
+  color: var(--orange);
+  text-decoration: none;
+}
+.switch-link a:hover {
+  text-decoration: underline;
+}
+ .topbar .logout-btn {
+      background: var(--orange, #ff6f00);
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .topbar .logout-btn:hover {
+      background: var(--light-orange, #ffa54b);
+    }
+
+    footer.footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 1rem 2rem;
+      background: #fff;
+      border-top: 1px solid #eee;
+      font-family: "Poppins", sans-serif;
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 2rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+    }
+    .footer-links a {
+      color: var(--orange, #ff6f00);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
+    }

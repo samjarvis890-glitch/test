@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Foodigo</title>
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+
+  <div class="auth-container">
+    <div class="auth-card">
+      <a href="#" class="logo">
+        <img src="https://static.vecteezy.com/system/resources/previews/052/792/818/non_2x/restaurant-logo-design-vector.jpg" alt="Foodigo Logo">
+        <h1>FOODIGO</h1>
+      </a>
+
+      <h2>Welcome Back 👋</h2>
+
+      <form id="loginForm" class="auth-form">
+        <label>Email
+          <input type="email" id="email" required placeholder="Enter your email">
+        </label>
+
+        <label>Password
+          <input type="password" id="password" required placeholder="Enter your password">
+        </label>
+
+        <button type="submit" class="btn primary">Log In</button>
+        <p class="form-msg" id="loginMsg"></p>
+      </form>
+
+      <p class="switch-link">
+        Don’t have an account? <a href="signup.html">Sign up</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // 🔐 Handle login submit
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // prevent form reload
+      
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const msg = document.getElementById("loginMsg");
+
+      // Simple front-end validation
+      if (email === "" || password === "") {
+        msg.textContent = "⚠️ Please fill in all fields!";
+        return;
+      }
+
+      // (Optional) You can validate credentials here using localStorage or an API call.
+      // For now, simulate successful login:
+      msg.textContent = "✅ Login successful! Redirecting...";
+      
+      // Redirect to homepage after short delay
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 1000);
+    });
+  </script>
+
+</body>
+</html>
